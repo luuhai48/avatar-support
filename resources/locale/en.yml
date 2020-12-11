@@ -1,0 +1,5 @@
+luuhai48-avatar-support:
+  admin:
+    settings:
+      title: Avatar Support - Support heic image
+      processor_url: Processor Url
