@@ -1,5 +1,6 @@
 import { override } from 'flarum/extend';
 import AvatarEditor from 'flarum/components/AvatarEditor';
+import mime from 'mime';
 
 app.initializers.add('luuhai48/avatar-support', () => {
     override(
@@ -16,9 +17,10 @@ app.initializers.add('luuhai48/avatar-support', () => {
                 .on('input', (e) => {
                     if (this.loading) return;
 
-                    let file = e.target.files[0];
-
-                    if (file.type === "image/heif") {
+                    let file = e.target.files[0],
+                        fileMime = mime.getType(file.name);
+                    
+                    if (fileMime === "image/heic" || fileMime === "image/heif") {
                         const data = new FormData();
                         data.append('img', file);
 
